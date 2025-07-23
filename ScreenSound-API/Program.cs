@@ -1,4 +1,5 @@
-﻿using ScreenSound_API.Modelos;
+﻿using ScreenSound_API.Filtros;
+using ScreenSound_API.Modelos;
 using System.Text.Json;
 
 using (HttpClient client = new HttpClient())
@@ -9,7 +10,10 @@ using (HttpClient client = new HttpClient())
         
         var musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!;
 
-        musicas[0].ExibirFichaTecnica();
+        //LinqFilter.FiltrarTodosOsGenerosMusicais(musicas);
+        //LinqOrder.ExibirListaDeArtistasOrdenados(musicas);
+        //LinqFilter.FiltrarArtistasPorGeneroMusical(musicas, "rock");
+        LinqFilter.FiltrarMusicasDeUmArtista(musicas, "Michel Teló");
     }
     catch(Exception ex) 
     {
